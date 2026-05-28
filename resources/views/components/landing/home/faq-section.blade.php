@@ -6,7 +6,7 @@
         <div class="mt-8 divide-y divide-border rounded-2xl border border-border bg-card shadow-card" x-data="{ open: 0 }">
             @foreach ($faqs as $index => $faq)
                 <div class="px-5 sm:px-6">
-                    <button type="button" class="flex w-full items-center justify-between py-4 text-left text-base font-semibold" x-on:click="open = open === {{ $index }} ? -1 : {{ $index }}">
+                    <button type="button" class="cursor-pointer flex w-full items-center justify-between py-4 text-left text-base font-semibold" x-on:click="open = open === {{ $index }} ? -1 : {{ $index }}">
                         <span>{{ $faq['question'] }}</span>
                         <span>▾</span>
                     </button>

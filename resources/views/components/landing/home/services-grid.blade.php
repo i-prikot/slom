@@ -11,7 +11,7 @@
                 <h2 class="font-display text-3xl font-bold tracking-tight sm:text-4xl">Что мы делаем</h2>
                 <p class="mt-3 max-w-2xl text-muted-foreground">Решаем задачи любой сложности. Не уверены, что именно нужно? Позвоните — подскажем лучшее решение для вашего объекта.</p>
             </div>
-            <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'services')" class="shrink-0">
+            <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'services')" class="cursor-pointer shrink-0">
                 <span class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-yellow-gradient px-7 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95">
                     <x-icons.lucide name="phone" class="h-4 w-4" />
                     Позвонить и уточнить

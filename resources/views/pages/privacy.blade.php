@@ -9,7 +9,7 @@
     <main class="min-h-screen bg-background">
         <header class="border-b border-border bg-secondary text-secondary-foreground">
             <div class="container-x flex items-center justify-between py-5">
-                <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary" wire:navigate><x-icons.lucide name="chevron-left" class="h-4 w-4" />На главную</a>
+                <a href="{{ route('home') }}" class="cursor-pointer inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary" wire:navigate><x-icons.lucide name="chevron-left" class="h-4 w-4" />На главную</a>
                 <a href="{{ route('home') }}" wire:navigate><img src="{{ Vite::asset('resources/images/logo-dark.png') }}" alt="{{ C::COMPANY }}" class="h-10 w-auto sm:h-11"></a>
             </div>
         </header>
@@ -117,7 +117,7 @@
                 <div class="mt-3 space-y-3 text-sm leading-relaxed text-foreground/85 sm:text-base">
                     <p>9.1. Администрация сайта вправе вносить изменения в настоящую Политику конфиденциальности без согласия Пользователя.</p>
                     <p>9.2. Новая Политика вступает в силу с момента её размещения на сайте.</p>
-                    <p>9.3. Настоящее согласие действует до момента его отзыва путем направления уведомления на адрес <a href="mailto:{{ C::EMAIL }}" class="text-primary hover:underline">{{ C::EMAIL }}</a>.</p>
+                    <p>9.3. Настоящее согласие действует до момента его отзыва путем направления уведомления на адрес <a href="mailto:{{ C::EMAIL }}" class="cursor-pointer text-primary hover:underline">{{ C::EMAIL }}</a>.</p>
                 </div>
             </section>
             <section class="mt-10">

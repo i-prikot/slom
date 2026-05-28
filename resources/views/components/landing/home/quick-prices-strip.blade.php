@@ -1,4 +1,4 @@
-<a href="#calculator" class="block border-b border-border bg-card transition hover:bg-muted/50">
+<a href="#calculator" class="cursor-pointer block border-b border-border bg-card transition hover:bg-muted/50">
     <div class="container-x flex flex-col items-start gap-3 py-3.5 sm:flex-row sm:items-center sm:gap-6 sm:py-3">
         <div class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Цены от</div>
         <ul class="flex flex-wrap items-center gap-x-6 gap-y-1.5 text-sm">

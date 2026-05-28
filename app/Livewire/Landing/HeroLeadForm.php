@@ -12,33 +12,6 @@ final class HeroLeadForm extends Component
     public string $phone = '+7 ';
     public bool $consent = false;
 
-    public function updatedPhone(string $value): void
-    {
-        $digits = substr(preg_replace('/\D+/', '', $value) ?? '', 0, 11);
-        if ($digits === '') {
-            $this->phone = '';
-
-            return;
-        }
-
-        $out = '+7';
-        if (strlen($digits) > 1) {
-            $out .= ' ('.substr($digits, 1, 3);
-        }
-        if (strlen($digits) >= 4) {
-            $out .= ') ';
-            $out .= substr($digits, 4, 3);
-        }
-        if (strlen($digits) >= 7) {
-            $out .= '-'.substr($digits, 7, 2);
-        }
-        if (strlen($digits) >= 9) {
-            $out .= '-'.substr($digits, 9, 2);
-        }
-
-        $this->phone = $out;
-    }
-
     public function submit(): void
     {
         $digits = preg_replace('/\D+/', '', $this->phone) ?? '';

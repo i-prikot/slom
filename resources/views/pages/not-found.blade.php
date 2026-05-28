@@ -8,7 +8,7 @@
         <div class="text-center">
             <h1 class="mb-4 text-4xl font-bold">404</h1>
             <p class="mb-4 text-xl text-muted-foreground">Страница не найдена</p>
-            <a href="{{ route('home') }}" class="text-primary underline hover:text-primary/90" wire:navigate>На главную</a>
+            <a href="{{ route('home') }}" class="cursor-pointer text-primary underline hover:text-primary/90" wire:navigate>На главную</a>
         </div>
     </div>
 </x-layouts.app>

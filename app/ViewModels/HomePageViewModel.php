@@ -39,6 +39,7 @@ final class HomePageViewModel
         public readonly array $drillingPrices,
         public readonly array $openingPrices,
         public readonly array $demolitionPrices,
+        public readonly array $coefficients,
         public readonly array $coefficientLabels,
     ) {
         if (
@@ -150,6 +151,7 @@ final class HomePageViewModel
             drillingPrices: PricingEstimator::DRILLING_PRICES,
             openingPrices: PricingEstimator::OPENING_PRICES,
             demolitionPrices: PricingEstimator::DEMOLITION_PRICES,
+            coefficients: PricingEstimator::COEFFICIENTS,
             coefficientLabels: PricingEstimator::COEFFICIENT_LABELS,
         );
     }

@@ -9,7 +9,7 @@
     <main class="min-h-screen bg-background">
         <header class="border-b border-border bg-secondary text-secondary-foreground">
             <div class="container-x flex items-center justify-between py-5">
-                <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary" wire:navigate><x-icons.lucide name="chevron-left" class="h-4 w-4" />На главную</a>
+                <a href="{{ route('home') }}" class="cursor-pointer inline-flex items-center gap-2 text-sm text-white/80 hover:text-primary" wire:navigate><x-icons.lucide name="chevron-left" class="h-4 w-4" />На главную</a>
                 <a href="{{ route('home') }}" wire:navigate><img src="{{ Vite::asset('resources/images/logo-dark.png') }}" alt="{{ C::COMPANY }}" class="h-10 w-auto sm:h-11"></a>
             </div>
         </header>
@@ -59,7 +59,7 @@
                 <div class="mt-3 space-y-3 text-sm leading-relaxed text-foreground/85 sm:text-base">
                     <p>5.1. Пользователь подтверждает добровольное согласие на обработку персональных данных при оформлении заявки или использовании сайта.</p>
                     <p>5.2. Пользователь обязуется поддерживать свои данные в актуальном состоянии.</p>
-                    <p>5.3. Отзыв согласия возможен путем письменного уведомления по адресу электронной почты: <a href="mailto:{{ C::EMAIL }}" class="text-primary hover:underline">{{ C::EMAIL }}</a>.</p>
+                    <p>5.3. Отзыв согласия возможен путем письменного уведомления по адресу электронной почты: <a href="mailto:{{ C::EMAIL }}" class="cursor-pointer text-primary hover:underline">{{ C::EMAIL }}</a>.</p>
                     <p>5.4. Заказчик может прекратить действие Соглашения, уведомив Исполнителя за 14 дней.</p>
                     <p>5.5. Уведомление о прекращении может быть направлено заказным почтовым отправлением с описью вложения или вручено лично под подпись уполномоченному представителю Исполнителя.</p>
                 </div>

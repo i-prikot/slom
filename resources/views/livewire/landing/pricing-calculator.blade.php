@@ -47,7 +47,7 @@
                 <div class="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Что нужно сделать?</div>
                 <div class="grid gap-3 sm:grid-cols-2">
                     @foreach ($workOptions as $option)
-                    <button type="button" wire:click="$set('workType', '{{ $option['id'] }}')" class="rounded-xl border-2 bg-card p-4 text-left transition hover:border-primary/60 hover:bg-primary/5 {{ $workType === $option['id'] ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border' }}">
+                    <button type="button" wire:click="$set('workType', '{{ $option['id'] }}')" class="cursor-pointer rounded-xl border-2 bg-card p-4 text-left transition hover:border-primary/60 hover:bg-primary/5 {{ $workType === $option['id'] ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border' }}">
                         <div class="font-semibold">{{ $option['title'] }}</div>
                         <div class="mt-1 text-xs text-muted-foreground">{{ $option['desc'] }}</div>
                     </button>
@@ -59,7 +59,7 @@
                 <div class="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Материал стены</div>
                 <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 @foreach ($materialOptions as $id => $label)
-                    <button type="button" wire:click="$set('material', '{{ $id }}')" class="rounded-xl border-2 bg-card p-4 text-center transition hover:border-primary/60 hover:bg-primary/5 {{ $material === $id ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border' }}">
+                    <button type="button" wire:click="$set('material', '{{ $id }}')" class="cursor-pointer rounded-xl border-2 bg-card p-4 text-center transition hover:border-primary/60 hover:bg-primary/5 {{ $material === $id ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border' }}">
                         <div class="font-semibold">{{ $label }}</div>
                     </button>
                 @endforeach
@@ -94,7 +94,7 @@
                 @elseif ($workType === 'opening')
                     <div class="grid gap-2">
                         @foreach ($openingPrices as $index => $row)
-                            <button type="button" wire:click="$set('presetIndex', {{ $index }})" class="rounded-xl border-2 p-3 text-left transition hover:border-primary/60 hover:bg-primary/5 {{ $presetIndex === $index ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border bg-card' }}">
+                            <button type="button" wire:click="$set('presetIndex', {{ $index }})" class="cursor-pointer rounded-xl border-2 p-3 text-left transition hover:border-primary/60 hover:bg-primary/5 {{ $presetIndex === $index ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border bg-card' }}">
                                 <div class="flex items-center justify-between gap-3">
                                     <span class="text-sm font-medium">{{ $row['type'] }}</span>
                                     <span class="text-sm font-semibold text-primary">{{ $row['price'] }}</span>
@@ -106,7 +106,7 @@
                     <div class="space-y-3">
                         <div class="grid gap-2">
                             @foreach ($demolitionPrices as $index => $row)
-                                <button type="button" wire:click="$set('presetIndex', {{ $index }})" class="rounded-xl border-2 p-3 text-left transition hover:border-primary/60 hover:bg-primary/5 {{ $presetIndex === $index ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border bg-card' }}">
+                                <button type="button" wire:click="$set('presetIndex', {{ $index }})" class="cursor-pointer rounded-xl border-2 p-3 text-left transition hover:border-primary/60 hover:bg-primary/5 {{ $presetIndex === $index ? 'border-primary bg-primary/10 ring-2 ring-primary/30' : 'border-border bg-card' }}">
                                     <div class="flex items-center justify-between gap-3">
                                         <span class="text-sm font-medium">{{ $row['type'] }}</span>
                                         <span class="shrink-0 text-sm font-semibold text-primary">{{ $row['price'] }}</span>
@@ -129,7 +129,7 @@
                 <p class="mb-4 text-xs text-muted-foreground">Отметьте, если применимо. Можно пропустить — посчитаем по базовой цене.</p>
                 <div class="grid gap-2 sm:grid-cols-2">
                 @foreach ($coefficients as $coef)
-                    <button type="button" wire:click="toggleCoef('{{ $coef['id'] }}')" class="flex items-center justify-between gap-3 rounded-xl border-2 p-3 text-left {{ in_array($coef['id'], $coefIds, true) ? 'border-primary bg-primary/10' : 'border-border bg-card' }}">
+                    <button type="button" wire:click="toggleCoef('{{ $coef['id'] }}')" class="cursor-pointer flex items-center justify-between gap-3 rounded-xl border-2 p-3 text-left {{ in_array($coef['id'], $coefIds, true) ? 'border-primary bg-primary/10' : 'border-border bg-card' }}">
                         <span class="text-sm font-medium">{{ $coef['label'] }}</span>
                         <span class="shrink-0 rounded-md px-2 py-0.5 text-xs font-semibold {{ in_array($coef['id'], $coefIds, true) ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground' }}">{{ $coef['hint'] }}</span>
                     </button>
@@ -170,13 +170,13 @@
                         </span>
                     </a>
                 </div>
-                <button type="button" x-data x-on:click="window.slomTrackCTA && window.slomTrackCTA('calc_cta_callback', 'calculator'); $dispatch('open-callback', { source: 'calculator' })" class="text-sm font-medium text-primary underline-offset-4 hover:underline">
+                <button type="button" x-data x-on:click="window.slomTrackCTA && window.slomTrackCTA('calc_cta_callback', 'calculator'); $dispatch('open-callback', { source: 'calculator' })" class="cursor-pointer text-sm font-medium text-primary underline-offset-4 hover:underline">
                     или закажите бесплатный обратный звонок
                 </button>
             </div>
 
             <div class="mt-5 rounded-lg border border-border px-4" x-data="{ open: false }">
-                <button type="button" class="flex w-full items-center justify-between py-4 text-left text-sm font-semibold" x-on:click="open = !open">
+                <button type="button" class="cursor-pointer flex w-full items-center justify-between py-4 text-left text-sm font-semibold" x-on:click="open = !open">
                     <span class="flex items-center gap-2">
                         <x-icons.lucide name="info" class="h-4 w-4 text-primary" />
                         Как считали
@@ -200,7 +200,7 @@
 
         <div class="mt-6 flex items-center justify-between gap-3">
             @if ($step > 1 && $step < 5)
-                <button type="button" wire:click="prevStep" class="inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-sm font-medium transition hover:bg-accent hover:text-accent-foreground">
+                <button type="button" wire:click="prevStep" class="cursor-pointer inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-sm font-medium transition hover:bg-accent hover:text-accent-foreground">
                     <x-icons.lucide name="chevron-left" class="h-4 w-4" />
                     Назад
                 </button>
@@ -208,11 +208,11 @@
                 <span></span>
             @endif
             @if ($step < 5)
-                <button type="button" wire:click="nextStep" class="inline-flex h-12 items-center justify-center gap-2 rounded-lg px-7 text-base font-medium transition disabled:pointer-events-none disabled:opacity-50 {{ $step === 4 ? 'bg-yellow-gradient font-semibold text-primary-foreground shadow-cta hover:brightness-105 active:brightness-95' : 'bg-primary text-primary-foreground hover:bg-primary/90' }}" @disabled($step === 1 && !$workType)>
+                <button type="button" wire:click="nextStep" class="cursor-pointer inline-flex h-12 items-center justify-center gap-2 rounded-lg px-7 text-base font-medium transition disabled:pointer-events-none disabled:opacity-50 {{ $step === 4 ? 'bg-yellow-gradient font-semibold text-primary-foreground shadow-cta hover:brightness-105 active:brightness-95' : 'bg-primary text-primary-foreground hover:bg-primary/90' }}" @disabled($step === 1 && !$workType)>
                     {{ $step === 4 ? 'Показать цену' : 'Далее' }}
                 </button>
             @else
-                <button type="button" wire:click="resetCalculator" class="mx-auto inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-sm font-medium transition hover:bg-accent hover:text-accent-foreground">
+                <button type="button" wire:click="resetCalculator" class="cursor-pointer mx-auto inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-sm font-medium transition hover:bg-accent hover:text-accent-foreground">
                     <x-icons.lucide name="rotate-ccw" class="h-4 w-4" />
                     Начать заново
                 </button>

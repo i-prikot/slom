@@ -7,6 +7,7 @@
     'drillingPrices',
     'openingPrices',
     'demolitionPrices',
+    'coefficients',
     'coefficientLabels',
 ])
 
@@ -18,7 +19,13 @@
             <p class="mt-4 text-base text-muted-foreground sm:text-lg">Цены — реальные, прямо как мы считаем на объекте. Никаких «звоните, узнаем». Точную сумму назовём по телефону за 2 минуты — нужны размеры и материал стены.</p>
         </div>
         <div class="mt-8">
-            <livewire:landing.pricing-calculator />
+            <x-landing.home.pricing-calculator
+                :cutting-prices="$cuttingPrices"
+                :drilling-prices="$drillingPrices"
+                :opening-prices="$openingPrices"
+                :demolition-prices="$demolitionPrices"
+                :coefficients="$coefficients"
+            />
         </div>
         <details class="group mt-8 rounded-2xl border border-border bg-card p-3 shadow-card sm:p-6" open>
             <summary class="cursor-pointer list-none">
@@ -31,11 +38,11 @@
                 </div>
             </summary>
             <div class="mt-4">
-                <div class="grid h-auto w-full grid-cols-2 gap-1 bg-muted p-1 sm:grid-cols-4">
-                    <button type="button" class="rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='cutting' ? 'bg-background font-semibold' : ''" x-on:click="tab='cutting'">Резка стен</button>
-                    <button type="button" class="rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='drilling' ? 'bg-background font-semibold' : ''" x-on:click="tab='drilling'">Бурение</button>
-                    <button type="button" class="rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='openings' ? 'bg-background font-semibold' : ''" x-on:click="tab='openings'">Проёмы</button>
-                    <button type="button" class="rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='demo' ? 'bg-background font-semibold' : ''" x-on:click="tab='demo'">Демонтаж</button>
+                <div class="grid h-auto w-full grid-cols-2 gap-1 bg-muted p-1 sm:grid-cols-4 rounded-xl">
+                    <button type="button" class="cursor-pointer rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='cutting' ? 'bg-background font-semibold' : ''" x-on:click="tab='cutting'">Резка стен</button>
+                    <button type="button" class="cursor-pointer rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='drilling' ? 'bg-background font-semibold' : ''" x-on:click="tab='drilling'">Бурение</button>
+                    <button type="button" class="cursor-pointer rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='openings' ? 'bg-background font-semibold' : ''" x-on:click="tab='openings'">Проёмы</button>
+                    <button type="button" class="cursor-pointer rounded-lg px-3 py-2 text-xs sm:text-sm" :class="tab==='demo' ? 'bg-background font-semibold' : ''" x-on:click="tab='demo'">Демонтаж</button>
                 </div>
                 <div x-show="tab==='cutting'" class="mt-6">
                     <div class="mb-3 text-sm text-muted-foreground">Алмазная резка — стоимость 1 погонного метра, в рублях</div>
@@ -54,7 +61,7 @@
                     <div class="overflow-x-auto rounded-xl border border-border"><table class="w-full text-sm"><thead class="bg-secondary text-secondary-foreground"><tr><th class="px-4 py-3 text-left font-semibold">Тип</th><th class="px-4 py-3 text-right font-semibold">Стоимость</th></tr></thead><tbody>@foreach ($demolitionPrices as $i => $row)<tr class="{{ $i % 2 ? 'bg-muted/40' : 'bg-card' }}"><td class="px-4 py-2.5 font-medium">{{ $row['type'] }}</td><td class="px-4 py-2.5 text-right tabular-nums font-semibold">{{ $row['price'] }}</td></tr>@endforeach</tbody></table></div>
                 </div>
                 <div class="mt-6 rounded-lg border border-border px-4" x-data="{ coefOpen: false }">
-                    <button type="button" class="flex w-full items-center justify-between py-4 text-left text-sm font-semibold" x-on:click="coefOpen = !coefOpen">
+                    <button type="button" class="cursor-pointer flex w-full items-center justify-between py-4 text-left text-sm font-semibold" x-on:click="coefOpen = !coefOpen">
                         <span class="flex items-center gap-2"><x-icons.lucide name="info" class="h-4 w-4 text-primary" />Усложняющие коэффициенты — честно, без сюрпризов</span>
                         <span class="text-primary transition" :class="coefOpen ? 'rotate-180' : ''">▾</span>
                     </button>
@@ -72,10 +79,10 @@
                     <div class="min-w-1"><div class="font-display text-xl font-bold sm:text-2xl">Не нашли свою позицию или сомневаетесь в расчёте?</div><div class="mt-1 text-sm text-secondary-foreground/70">Назовите размеры и материал — посчитаем точную цену по телефону за 2 минуты.</div></div>
                 </div>
                 <div class="flex w-full flex-col gap-2.5 sm:flex-row lg:col-span-4 lg:flex-col lg:items-stretch xl:flex-row">
-                    <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'pricing')" class="sm:flex-1 xl:flex-1"><span class="inline-flex h-14 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-yellow-gradient px-8 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95"><x-icons.lucide name="phone" class="h-5 w-5" /> {{ C::PHONE_DISPLAY }}</span></a>
+                    <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'pricing')" class="cursor-pointer sm:flex-1 xl:flex-1"><span class="inline-flex h-14 w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-yellow-gradient px-8 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95"><x-icons.lucide name="phone" class="h-5 w-5" /> {{ C::PHONE_DISPLAY }}</span></a>
                     <div class="flex gap-2 sm:flex-1">
-                        <a href="{{ C::messengerUrl(C::WHATSAPP_URL, 'pricing') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('whatsapp', 'pricing')" aria-label="WhatsApp" class="flex h-14 flex-1 items-center justify-center rounded-xl bg-whatsapp text-whatsapp-foreground hover:brightness-110"><x-icons.lucide name="message-circle" class="h-5 w-5" /></a>
-                        <a href="{{ C::messengerUrl(C::TELEGRAM_URL, 'pricing') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('telegram', 'pricing')" aria-label="Telegram" class="flex h-14 flex-1 items-center justify-center rounded-xl bg-telegram text-telegram-foreground hover:brightness-110"><x-icons.lucide name="send" class="h-5 w-5" /></a>
+                        <a href="{{ C::messengerUrl(C::WHATSAPP_URL, 'pricing') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('whatsapp', 'pricing')" aria-label="WhatsApp" class="cursor-pointer flex h-14 flex-1 items-center justify-center rounded-xl bg-whatsapp text-whatsapp-foreground hover:brightness-110"><x-icons.lucide name="message-circle" class="h-5 w-5" /></a>
+                        <a href="{{ C::messengerUrl(C::TELEGRAM_URL, 'pricing') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('telegram', 'pricing')" aria-label="Telegram" class="cursor-pointer flex h-14 flex-1 items-center justify-center rounded-xl bg-telegram text-telegram-foreground hover:brightness-110"><x-icons.lucide name="send" class="h-5 w-5" /></a>
                     </div>
                 </div>
             </div>

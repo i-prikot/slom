@@ -15,10 +15,10 @@
             </div>
         </div>
         <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
-            <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'emergency')" class="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-yellow-gradient px-7 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95 sm:w-auto"><x-icons.lucide name="phone" class="h-4 w-4" /> {{ C::PHONE_DISPLAY }}</a>
+            <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'emergency')" class="cursor-pointer inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-yellow-gradient px-7 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95 sm:w-auto"><x-icons.lucide name="phone" class="h-4 w-4" /> {{ C::PHONE_DISPLAY }}</a>
             <div class="flex gap-2">
-                <a href="{{ C::messengerUrl(C::WHATSAPP_URL, 'emergency') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('whatsapp', 'emergency')" aria-label="WhatsApp" class="flex h-12 w-12 items-center justify-center rounded-lg bg-whatsapp text-whatsapp-foreground hover:brightness-110"><x-icons.lucide name="message-circle" class="h-5 w-5" /></a>
-                <a href="{{ C::messengerUrl(C::TELEGRAM_URL, 'emergency') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('telegram', 'emergency')" aria-label="Telegram" class="flex h-12 w-12 items-center justify-center rounded-lg bg-telegram text-telegram-foreground hover:brightness-110"><x-icons.lucide name="send" class="h-5 w-5" /></a>
+                <a href="{{ C::messengerUrl(C::WHATSAPP_URL, 'emergency') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('whatsapp', 'emergency')" aria-label="WhatsApp" class="cursor-pointer flex h-12 w-12 items-center justify-center rounded-lg bg-whatsapp text-whatsapp-foreground hover:brightness-110"><x-icons.lucide name="message-circle" class="h-5 w-5" /></a>
+                <a href="{{ C::messengerUrl(C::TELEGRAM_URL, 'emergency') }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('telegram', 'emergency')" aria-label="Telegram" class="cursor-pointer flex h-12 w-12 items-center justify-center rounded-lg bg-telegram text-telegram-foreground hover:brightness-110"><x-icons.lucide name="send" class="h-5 w-5" /></a>
             </div>
         </div>
     </div>

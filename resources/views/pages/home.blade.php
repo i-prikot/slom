@@ -3,7 +3,7 @@
     :metaTitle="'СЛОМ24 — Алмазная резка и бурение бетона'"
     :metaDescription="'Алмазная резка, бурение и демонтаж бетона в Красноярске и крае. Приезд за 60 минут, точная цена за 2 минуты.'"
 >
-    <main class="min-h-screen pb-16 lg:pb-0" x-data x-init="window.initHomeCallbackTrigger?.()">
+    <main class="min-h-screen lg:pb-0" x-data x-init="window.initHomeCallbackTrigger?.()">
         <x-landing.home.header />
         <x-landing.home.hero />
         <x-landing.home.quick-prices-strip />
@@ -15,6 +15,7 @@
             :drilling-prices="$vm->drillingPrices"
             :opening-prices="$vm->openingPrices"
             :demolition-prices="$vm->demolitionPrices"
+            :coefficients="$vm->coefficients"
             :coefficient-labels="$vm->coefficientLabels"
         />
 

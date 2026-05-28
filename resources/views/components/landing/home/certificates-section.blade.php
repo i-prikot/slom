@@ -1,6 +1,6 @@
 @props(['certificates'])
 
-<section class="bg-surface py-16 sm:py-20 lg:py-24" x-data="{ certOpen: false, certImage: '', certTitle: '', certSubtitle: '' }">
+<section class="bg-surface py-16 sm:py-20 lg:py-24" x-cloak x-data="{ certOpen: false, certImage: '', certTitle: '', certSubtitle: '' }">
     <div class="container-x">
         <div class="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-card via-background to-card p-6 shadow-card sm:p-10">
             <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
@@ -19,8 +19,7 @@
             <div class="relative mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                 @foreach ($certificates as $certificate)
                     <button
-                        type="button"
-                        class="group relative overflow-hidden rounded-xl border border-border bg-card text-left shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elevated"
+                        type="button" class="cursor-pointer group relative overflow-hidden rounded-xl border border-border bg-card text-left shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-elevated"
                         data-cert-image="{{ Vite::asset('resources/images/'.$certificate['image']) }}"
                         data-cert-title="{{ $certificate['title'] }}"
                         data-cert-subtitle="{{ $certificate['subtitle'] }}"
@@ -38,12 +37,12 @@
         </div>
     </div>
     <div x-show="certOpen" x-transition.opacity class="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4">
-        <div class="max-h-[92vh] w-full max-w-4xl overflow-hidden rounded-xl bg-card">
+        <div class="flex max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl bg-card">
             <div class="flex items-center justify-between gap-4 border-b border-border px-5 py-3">
                 <div class="min-w-0"><div class="truncate font-display text-base font-semibold" x-text="certTitle"></div><div class="truncate text-xs text-muted-foreground" x-text="certSubtitle"></div></div>
-                <button type="button" class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-background transition hover:bg-muted" x-on:click="certOpen = false" aria-label="Закрыть"><x-icons.lucide name="x" class="h-4 w-4" /></button>
+                <button type="button" class="cursor-pointer inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-background transition hover:bg-muted" x-on:click="certOpen = false" aria-label="Закрыть"><x-icons.lucide name="x" class="h-4 w-4" /></button>
             </div>
-            <div class="overflow-auto bg-muted p-4"><img :src="certImage" :alt="certTitle" class="mx-auto h-auto w-full max-w-3xl rounded-md shadow-elevated"></div>
+            <div class="min-h-0 flex-1 overflow-y-auto bg-muted p-4"><img :src="certImage" :alt="certTitle" class="mx-auto h-auto w-full max-w-3xl rounded-md shadow-elevated"></div>
         </div>
     </div>
 </section>
