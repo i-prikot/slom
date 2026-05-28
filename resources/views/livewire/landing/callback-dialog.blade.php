@@ -1,0 +1,60 @@
+<div
+    x-data="{ open: $wire.entangle('open') }"
+    x-on:open-callback.window="$wire.openDialog($event.detail?.source ?? 'unknown')"
+    x-on:keydown.escape.window="open && $wire.closeDialog()"
+>
+    <template x-if="open">
+        <div class="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 p-4" x-transition.opacity>
+            <div class="w-full max-w-md rounded-2xl border border-border bg-card p-6 shadow-elevated sm:max-w-md" x-transition.scale x-on:click.outside="$wire.closeDialog()" role="dialog" aria-modal="true" aria-labelledby="callback-dialog-title" aria-describedby="callback-dialog-description">
+                <div class="flex items-start justify-between gap-3">
+                    <h3 id="callback-dialog-title" class="font-display text-2xl font-bold">Перезвоним за 5 минут</h3>
+                    <button type="button" class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-background transition hover:bg-muted" x-on:click="$wire.closeDialog()" aria-label="Закрыть">
+                        <x-icons.lucide name="x" class="h-4 w-4" />
+                    </button>
+                </div>
+                <p id="callback-dialog-description" class="mt-1 text-sm text-muted-foreground">Оставьте номер — обсудим ваш объект и сразу назовём цену. Без спама.</p>
+
+                <form wire:submit="submit" class="mt-4 space-y-4">
+                    <div>
+                        <label class="mb-1.5 block text-sm font-medium">Имя (необязательно)</label>
+                        <input wire:model.live="name" class="w-full rounded-lg border border-input bg-background px-3 py-2" placeholder="Как к вам обращаться">
+                    </div>
+                    <div>
+                        <label class="mb-1.5 block text-sm font-medium">Телефон <span class="text-destructive">*</span></label>
+                        <input wire:model.live="phone" type="tel" inputmode="tel" required placeholder="+7 (___) ___-__-__" class="w-full rounded-lg border border-input bg-background px-3 py-2 text-base">
+                    </div>
+                    <label class="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
+                        <input wire:model.live="consent" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-border">
+                        <span>Я согласен с <a href="{{ route('privacy') }}" class="text-primary hover:underline" wire:navigate>политикой конфиденциальности</a></span>
+                    </label>
+                    <button
+                        type="submit"
+                        class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-yellow-gradient px-8 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95 disabled:pointer-events-none disabled:opacity-50"
+                        wire:loading.attr="disabled"
+                        wire:target="submit"
+                        @disabled(!$consent)
+                    >
+                        <x-icons.lucide name="phone" class="h-5 w-5" />
+                        <span wire:loading.remove wire:target="submit">Жду звонка</span>
+                        <span wire:loading wire:target="submit">Отправляем...</span>
+                    </button>
+
+                    <ul class="space-y-1.5 text-xs text-muted-foreground">
+                        <li class="flex items-center gap-2">
+                            <x-icons.lucide name="clock" class="h-3.5 w-3.5 text-primary" />
+                            Перезвоним в течение 5 минут (8:00–20:00)
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <x-icons.lucide name="shield-check" class="h-3.5 w-3.5 text-primary" />
+                            Не передаём номер третьим лицам
+                        </li>
+                    </ul>
+
+                    <div class="border-t pt-3 text-center text-sm text-muted-foreground">
+                        Срочно? <a href="tel:{{ \App\Support\LandingContact::PHONE_TEL }}" class="font-semibold text-foreground hover:text-primary">{{ \App\Support\LandingContact::PHONE_DISPLAY }}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </template>
+</div>
