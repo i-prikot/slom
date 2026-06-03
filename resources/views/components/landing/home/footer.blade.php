@@ -7,13 +7,13 @@
         <div class="grid gap-10 lg:grid-cols-12">
             <div class="lg:col-span-5">
                 <div class="text-xs font-semibold uppercase tracking-wider text-white/50">Звоните напрямую</div>
-                <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer')" class="cursor-pointer mt-2 flex items-center gap-3 font-display text-2xl font-bold text-white transition hover:text-primary sm:text-3xl">
+                <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer')" class="mcn-phone cursor-pointer mt-2 flex items-center gap-3 font-display text-2xl font-bold text-white transition hover:text-primary sm:text-3xl">
                     <span class="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground"><x-icons.lucide name="phone" class="h-5 w-5" /></span>
                     {{ C::PHONE_DISPLAY }}
                 </a>
                 <div class="mt-2 flex flex-col gap-1 text-sm">
-                    <a href="tel:{{ C::PHONE_SECONDARY_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer_secondary')" class="cursor-pointer text-white/80 transition hover:text-primary">{{ C::PHONE_SECONDARY_DISPLAY }} <span class="text-white/40">— офис</span></a>
-                    <a href="tel:{{ C::PHONE_MOBILE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer_mobile')" class="cursor-pointer text-white/80 transition hover:text-primary">{{ C::PHONE_MOBILE_DISPLAY }} <span class="text-white/40">— мобильный</span></a>
+                    <a href="tel:{{ C::PHONE_SECONDARY_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer_secondary')" class="mcn-phone cursor-pointer text-white/80 transition hover:text-primary">{{ C::PHONE_SECONDARY_DISPLAY }} <span class="text-white/40">— офис</span></a>
+                    <a href="tel:{{ C::PHONE_MOBILE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer_mobile')" class="mcn-phone cursor-pointer text-white/80 transition hover:text-primary">{{ C::PHONE_MOBILE_DISPLAY }} <span class="text-white/40">— мобильный</span></a>
                 </div>
                 <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
                     <span class="inline-flex items-center gap-1.5 text-white/70">

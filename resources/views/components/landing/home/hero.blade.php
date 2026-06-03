@@ -34,7 +34,7 @@
                                 <x-icons.lucide name="phone" class="h-4 w-4" />
                             </span>
                             <div class="leading-tight">
-                                <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'hero_main')" class="cursor-pointer block font-display text-xl font-bold tracking-tight text-white hover:text-primary sm:text-2xl">{{ C::PHONE_DISPLAY }}</a>
+                                <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'hero_main')" class="mcn-phone cursor-pointer block font-display text-xl font-bold tracking-tight text-white hover:text-primary sm:text-2xl">{{ C::PHONE_DISPLAY }}</a>
                                 <span class="inline-flex items-center gap-1.5 text-[11px] text-white/60">
                                     <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_3px_rgba(52,211,153,0.2)]"></span>
                                     <x-icons.lucide name="clock" class="h-3 w-3" /> Сейчас отвечаем

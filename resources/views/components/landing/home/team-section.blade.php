@@ -46,7 +46,7 @@
                 <div class="font-display text-lg font-semibold sm:text-xl">Хотите, чтобы наш мастер приехал на ваш объект?</div>
                 <div class="mt-1 text-sm text-secondary-foreground/70">Оценим работу и сразу скажем точную цену.</div>
             </div>
-            <a href="tel:{{ C::PHONE_TEL }}" class="cursor-pointer inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-yellow-gradient px-7 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95 sm:w-auto"><x-icons.lucide name="phone" class="h-4 w-4" /> <nobr>{{ C::PHONE_DISPLAY }}</nobr></a>
+            <a href="tel:{{ C::PHONE_TEL }}" class="mcn-phone cursor-pointer inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-yellow-gradient px-7 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95 sm:w-auto"><x-icons.lucide name="phone" class="h-4 w-4" /> <nobr>{{ C::PHONE_DISPLAY }}</nobr></a>
         </div>
     </div>
 </section>

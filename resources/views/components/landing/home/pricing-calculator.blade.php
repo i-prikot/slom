@@ -149,7 +149,7 @@
             </div>
 
             <div class="mt-5 grid gap-2.5">
-                <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_phone', 'calculator')">
+                <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_phone', 'calculator')" class="mcn-phone">
                     <span class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-yellow-gradient px-8 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95">
                         <x-icons.lucide name="phone" class="h-5 w-5" />
                         Позвонить {{ C::PHONE_DISPLAY }}

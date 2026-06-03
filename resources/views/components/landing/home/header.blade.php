@@ -9,7 +9,7 @@
         </a>
         <div class="flex items-center gap-2 sm:gap-3">
             <div class="hidden text-right md:block">
-                <a href="tel:{{ C::PHONE_TEL }}" class="cursor-pointer block text-lg font-bold text-white hover:text-primary">{{ C::PHONE_DISPLAY }}</a>
+                <a href="tel:{{ C::PHONE_TEL }}" class="mcn-phone cursor-pointer block text-lg font-bold text-white hover:text-primary">{{ C::PHONE_DISPLAY }}</a>
                 <span class="inline-flex items-center gap-1.5 text-xs text-white/60">
                     <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_3px_rgba(52,211,153,0.2)]"></span>
                     Сейчас отвечаем · 8:00 – 20:00

@@ -6,8 +6,8 @@ namespace App\Support;
 
 final class LandingContact
 {
-    public const PHONE_DISPLAY = '+7 (391) 205-15-15';
-    public const PHONE_TEL = '+73912051515';
+    public const PHONE_DISPLAY = '8 (902) 990-50-05';
+    public const PHONE_TEL = '+79029905005';
     public const PHONE_SECONDARY_DISPLAY = '+7 (391) 242-08-08';
     public const PHONE_SECONDARY_TEL = '+73912420808';
     public const PHONE_MOBILE_DISPLAY = '8 (902) 990-50-05';
@@ -15,8 +15,8 @@ final class LandingContact
     public const EMAIL = 'slom24@mail.ru';
     public const ADDRESS = 'Красноярск, ул. Дубровинского, 58';
     public const ADDRESS_MAP_URL = 'https://yandex.ru/maps/?text=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%8F%D1%80%D1%81%D0%BA%2C%20%D0%94%D1%83%D0%B1%D1%80%D0%BE%D0%B2%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2C%2058';
-    public const WHATSAPP_URL = 'https://wa.me/73912051515';
-    public const TELEGRAM_URL = 'https://t.me/+73912051515';
+    public const WHATSAPP_URL = 'https://wa.me/+79029905005';
+    public const TELEGRAM_URL = 'https://t.me/+79029905005';
     public const MAX_URL = 'https://max.ru/u/+79029905005';
     public const COMPANY = 'СЛОМ24';
     public const CITY = 'Красноярск';
