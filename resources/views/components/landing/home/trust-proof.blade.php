@@ -15,7 +15,7 @@
                         <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/25">
                             <x-icons.lucide :name="$document['icon']" class="h-5 w-5" />
                         </span>
-                        <div class="text-sm font-medium">{{ $document['title'] }}</div>
+                        <div lang="ru" class="hyphens-manual text-sm font-medium">{{ $document['title'] }}</div>
                     </div>
                 @endforeach
             </div>

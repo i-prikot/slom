@@ -97,7 +97,7 @@ final class HomePageViewModel
             ],
             trustDocuments: [
                 ['title' => 'СРО и допуски', 'icon' => 'award'],
-                ['title' => 'Страховка ответственности', 'icon' => 'shield-check'],
+                ['title' => "Страховка ответ\u{00AD}ствен\u{00AD}но\u{00AD}сти", 'icon' => 'shield-check'],
                 ['title' => 'Работаем по договору', 'icon' => 'file-check'],
             ],
             trustClients: [
