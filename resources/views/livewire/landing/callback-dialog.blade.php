@@ -52,8 +52,8 @@
                     <input wire:model.live="phone" type="tel" inputmode="tel" required placeholder="+7 (___) ___-__-__" class="w-full rounded-lg border border-input bg-background px-3 py-2 text-base">
                 </div>
                 <label class="flex cursor-pointer items-start gap-2 text-xs text-muted-foreground">
-                    <input wire:model.live="consent" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-border">
-                    <span>Я согласен с <a href="{{ route('privacy') }}" class="cursor-pointer text-primary hover:underline" wire:navigate>политикой конфиденциальности</a></span>
+                    <input wire:model.live="consent" type="checkbox" class="checkbox-site mt-0.5">
+                    <span class="relative top-0.5">Я согласен с <a href="{{ route('privacy') }}" class="cursor-pointer text-primary hover:underline" wire:navigate>политикой конфиденциальности</a></span>
                 </label>
                 <button
                     type="submit" class="cursor-pointer inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-yellow-gradient px-8 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95 disabled:pointer-events-none disabled:opacity-50"

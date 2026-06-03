@@ -28,8 +28,8 @@
     </div>
 
     <label class="mt-3 flex cursor-pointer items-start gap-2 text-[12px] text-white/75">
-        <input wire:model.live="consent" x-model="consentAccepted" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-white/40">
-        <span>
+        <input wire:model.live="consent" x-model="consentAccepted" type="checkbox" class="checkbox-site">
+        <span class="relative top-0.5">
             Я согласен с
             <a href="{{ route('privacy') }}" class="cursor-pointer text-primary underline-offset-2 hover:underline" wire:navigate>политикой конфиденциальности</a>
         </span>
