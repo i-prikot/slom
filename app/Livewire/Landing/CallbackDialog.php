@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Landing;
 
+use App\Data\LeadRequestData;
+use App\Support\LeadFormValidator;
+use App\Support\LeadRequestSubmitter;
 use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
@@ -17,18 +20,26 @@ final class CallbackDialog extends Component
 
     public function submit(): void
     {
-        $digits = preg_replace('/\D+/', '', $this->phone) ?? '';
-        if (strlen($digits) < 11) {
-            Toaster::error('Укажите корректный номер телефона');
+        $normalizedPhone = LeadFormValidator::normalizedPhone($this->phone);
+        if ($normalizedPhone === null) {
+            Toaster::error(LeadFormValidator::phoneErrorMessage());
 
             return;
         }
 
         if (! $this->consent) {
-            Toaster::error('Подтвердите согласие с политикой конфиденциальности');
+            Toaster::error(LeadFormValidator::consentErrorMessage());
 
             return;
         }
+
+        LeadRequestSubmitter::submit(new LeadRequestData(
+            phone: $normalizedPhone,
+            phoneDisplay: $this->phone,
+            name: $this->name !== '' ? $this->name : null,
+            source: $this->source,
+            formType: 'callback',
+        ));
 
         Toaster::success('Спасибо! Перезвоним в течение 5 минут.');
         $this->reset(['name', 'consent']);
