@@ -14,7 +14,7 @@ final class CallbackDialog extends Component
 {
     public bool $open = false;
     public string $name = '';
-    public string $phone = '+7 ';
+    public string $phone = '+7';
     public bool $consent = false;
     public string $source = 'unknown';
 

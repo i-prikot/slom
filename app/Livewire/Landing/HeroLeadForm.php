@@ -12,7 +12,7 @@ use Masmerise\Toaster\Toaster;
 
 final class HeroLeadForm extends Component
 {
-    public string $phone = '+7 ';
+    public string $phone = '+7';
     public bool $consent = false;
 
     public function submit(): void
