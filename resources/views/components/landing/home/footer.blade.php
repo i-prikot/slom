@@ -11,14 +11,14 @@
                     <span class="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground"><x-icons.lucide name="phone" class="h-5 w-5" /></span>
                     {{ C::phoneDisplay() }}
                 </a>
-                <div class="mt-2 flex flex-col gap-1 text-sm">
+                <!--<div class="mt-2 flex flex-col gap-1 text-sm">
                     <a href="tel:{{ C::phoneOfficeTel() }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer_secondary')" class="mcn-phone cursor-pointer text-white/80 transition hover:text-primary">{{ C::phoneOfficeDisplay() }} <span class="text-white/40">— офис</span></a>
                     <a href="tel:{{ C::phoneMobileTel() }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'footer_mobile')" class="mcn-phone cursor-pointer text-white/80 transition hover:text-primary">{{ C::phoneMobileDisplay() }} <span class="text-white/40">— мобильный</span></a>
-                </div>
+                </div>-->
                 <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
                     <span class="inline-flex items-center gap-1.5 text-white/70">
                         <span class="h-2 w-2 rounded-full {{ C::isOpenNow() ? 'bg-emerald-400 shadow-[0_0_0_3px_rgba(52,211,153,0.2)]' : 'bg-white/30' }}"></span>
-                        <span class="font-semibold text-white">{{ C::isOpenNow() ? 'Сейчас открыто' : 'Сейчас закрыто' }}</span>
+                        <span class="font-semibold text-white">{{ C::isOpenNow() ? 'Сейчас работаем' : 'Сейчас закрыто' }}</span>
                     </span>
                     <span class="text-white/50">·</span>
                     <span class="text-white/60">{{ C::workHoursLabel() }}</span>
