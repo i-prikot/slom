@@ -37,6 +37,8 @@ final class HeroLeadForm extends Component
             formType: 'hero',
         ));
 
+        $this->js('window.slomReachGoal && window.slomReachGoal("SEND")');
+
         Toaster::success('Спасибо! Перезвоним за 5 минут.');
         $this->reset(['consent']);
         $this->phone = '+7 ';

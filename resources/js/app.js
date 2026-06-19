@@ -11,6 +11,14 @@ const messengerTexts = {
     footer: 'Здравствуйте! Оставляю заявку на консультацию по алмазной резке.',
 };
 
+window.slomReachGoal = function slomReachGoal(goal) {
+    if (typeof window.ym !== 'function' || !window.slomYandexMetrikaId) {
+        return;
+    }
+
+    window.ym(window.slomYandexMetrikaId, 'reachGoal', goal);
+};
+
 window.slomTrackCTA = function slomTrackCTA(type, source) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({

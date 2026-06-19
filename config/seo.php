@@ -12,6 +12,8 @@ return [
 
     'twitter_site' => env('SEO_TWITTER_SITE'),
 
+    'yandex_metrika_id' => env('YANDEX_METRIKA_ID'),
+
     'sitemap' => [
         [
             'route' => 'home',

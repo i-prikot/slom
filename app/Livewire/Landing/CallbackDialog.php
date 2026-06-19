@@ -41,6 +41,8 @@ final class CallbackDialog extends Component
             formType: 'callback',
         ));
 
+        $this->js('window.slomReachGoal && window.slomReachGoal("SEND")');
+
         Toaster::success('Спасибо! Перезвоним в течение 5 минут.');
         $this->reset(['name', 'consent']);
         $this->phone = '+7 ';
