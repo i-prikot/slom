@@ -8,6 +8,7 @@ use App\Data\LeadRequestData;
 use App\Livewire\Landing\CallbackDialog;
 use App\Livewire\Landing\HeroLeadForm;
 use App\Mail\LeadRequestMail;
+use App\Models\LandingSettings;
 use App\Support\LeadRequestSubmitter;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
@@ -24,6 +25,9 @@ final class LeadRequestTest extends TestCase
         parent::setUp();
 
         config(['landing.lead_mail_to' => 'leads@example.com']);
+
+        LandingSettings::query()->update(['lead_mail_to' => 'leads@example.com']);
+        LandingSettings::flushCache();
     }
 
     public function test_callback_dialog_submits_lead_and_sends_mail(): void
@@ -82,9 +86,11 @@ final class LeadRequestTest extends TestCase
     {
         Mail::fake();
         config(['landing.lead_mail_to' => null]);
+        LandingSettings::query()->update(['lead_mail_to' => '']);
+        LandingSettings::flushCache();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('LEAD_MAIL_TO is not configured');
+        $this->expectExceptionMessage('Lead mail recipient is not configured');
 
         LeadRequestSubmitter::submit(new LeadRequestData(
             phone: '73912051515',
@@ -98,6 +104,8 @@ final class LeadRequestTest extends TestCase
     {
         Mail::fake();
         config(['landing.lead_mail_to' => '']);
+        LandingSettings::query()->update(['lead_mail_to' => '']);
+        LandingSettings::flushCache();
 
         try {
             LeadRequestSubmitter::submit(new LeadRequestData(

@@ -78,7 +78,7 @@
                 </ul>
 
                 <div class="border-t pt-3 text-center text-sm text-muted-foreground">
-                    Срочно? <a href="tel:{{ \App\Support\LandingContact::PHONE_TEL }}" class="mcn-phone cursor-pointer font-semibold text-foreground hover:text-primary">{{ \App\Support\LandingContact::PHONE_DISPLAY }}</a>
+                    Срочно? <a href="tel:{{ \App\Support\LandingContact::phoneTel() }}" class="mcn-phone cursor-pointer font-semibold text-foreground hover:text-primary">{{ \App\Support\LandingContact::phoneDisplay() }}</a>
                 </div>
             </form>
         </div>

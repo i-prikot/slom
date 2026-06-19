@@ -9,12 +9,12 @@
         <div class="flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div class="max-w-2xl">
                 <div class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">Отзывы клиентов</div>
-                <h2 class="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Нам ставят <span class="inline-flex items-center gap-1 text-primary">{{ C::YANDEX_RATING }}<svg viewBox="0 0 20 20" class="h-5 w-5 fill-current" aria-hidden="true" focusable="false"><path d="M10 1.5l2.62 5.31 5.86.85-4.24 4.13 1 5.84L10 14.87l-5.24 2.76 1-5.84L1.52 7.66l5.86-.85L10 1.5z" /></svg></span><br class="hidden sm:block"> на Яндекс.Картах</h2>
+                <h2 class="mt-4 font-display text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">Нам ставят <span class="inline-flex items-center gap-1 text-primary">{{ C::yandexRating() }}<svg viewBox="0 0 20 20" class="h-5 w-5 fill-current" aria-hidden="true" focusable="false"><path d="M10 1.5l2.62 5.31 5.86.85-4.24 4.13 1 5.84L10 14.87l-5.24 2.76 1-5.84L1.52 7.66l5.86-.85L10 1.5z" /></svg></span><br class="hidden sm:block"> на Яндекс.Картах</h2>
                 <p class="mt-4 text-base text-muted-foreground sm:text-lg">Реальные отзывы людей, для которых мы делали работу. Все можно проверить на Яндексе.</p>
             </div>
-            <a href="{{ C::YANDEX_PROFILE_URL }}" target="_blank" rel="noopener" class="cursor-pointer inline-flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 shadow-card transition hover:border-primary/40 hover:shadow-elevated">
+            <a href="{{ C::yandexProfileUrl() }}" target="_blank" rel="noopener" class="cursor-pointer inline-flex items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 shadow-card transition hover:border-primary/40 hover:shadow-elevated">
                 <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FC3F1D] font-bold text-white">Я</div>
-                <div><div class="flex items-center gap-1.5"><span class="font-display text-2xl font-bold leading-none">{{ C::YANDEX_RATING }}</span><span class="flex items-center gap-0.5 text-primary" aria-hidden="true">@for ($i = 0; $i < 5; $i++)<svg viewBox="0 0 20 20" class="h-4 w-4 fill-current" focusable="false"><path d="M10 1.5l2.62 5.31 5.86.85-4.24 4.13 1 5.84L10 14.87l-5.24 2.76 1-5.84L1.52 7.66l5.86-.85L10 1.5z" /></svg>@endfor</span></div><div class="text-xs text-muted-foreground">Рейтинг на Яндекс.Картах</div></div>
+                <div><div class="flex items-center gap-1.5"><span class="font-display text-2xl font-bold leading-none">{{ C::yandexRating() }}</span><span class="flex items-center gap-0.5 text-primary" aria-hidden="true">@for ($i = 0; $i < 5; $i++)<svg viewBox="0 0 20 20" class="h-4 w-4 fill-current" focusable="false"><path d="M10 1.5l2.62 5.31 5.86.85-4.24 4.13 1 5.84L10 14.87l-5.24 2.76 1-5.84L1.52 7.66l5.86-.85L10 1.5z" /></svg>@endfor</span></div><div class="text-xs text-muted-foreground">Рейтинг на Яндекс.Картах</div></div>
             </a>
         </div>
         <div class="mt-12 grid gap-5 md:grid-cols-2">
@@ -27,7 +27,7 @@
             @endforeach
         </div>
         <div class="mt-8 text-center">
-            <a href="{{ C::YANDEX_PROFILE_URL }}" target="_blank" rel="noopener" class="cursor-pointer inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary">
+            <a href="{{ C::yandexProfileUrl() }}" target="_blank" rel="noopener" class="cursor-pointer inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary">
                 Смотреть все отзывы на Яндекс.Картах
                 <x-icons.lucide name="external-link" class="h-4 w-4" />
             </a>

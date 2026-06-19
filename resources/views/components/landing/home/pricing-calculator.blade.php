@@ -18,8 +18,8 @@
         openingPrices: @js($openingPrices),
         demolitionPrices: @js($demolitionPrices),
         coefficients: @js($coefficients),
-        whatsappBaseUrl: @js(C::WHATSAPP_URL),
-        telegramBaseUrl: @js(C::TELEGRAM_URL),
+        whatsappBaseUrl: @js(C::showWhatsApp() ? C::whatsappUrl() : null),
+        telegramBaseUrl: @js(C::showTelegram() ? C::telegramUrl() : null),
     })"
 >
     <div class="border-b border-border bg-gradient-to-r from-primary/10 via-primary/5 to-transparent px-5 py-4 sm:px-6">
@@ -149,26 +149,36 @@
             </div>
 
             <div class="mt-5 grid gap-2.5">
-                <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_phone', 'calculator')" class="mcn-phone">
+                <a href="tel:{{ C::phoneTel() }}" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_phone', 'calculator')" class="mcn-phone">
                     <span class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-yellow-gradient px-8 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95">
                         <x-icons.lucide name="phone" class="h-5 w-5" />
-                        Позвонить {{ C::PHONE_DISPLAY }}
+                        Позвонить {{ C::phoneDisplay() }}
                     </span>
                 </a>
-                <div class="grid grid-cols-2 gap-2.5">
-                    <a :href="whatsAppHref" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_whatsapp', 'calculator')">
-                        <span class="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-whatsapp px-7 text-base font-semibold text-whatsapp-foreground transition hover:bg-whatsapp/90">
-                            <x-icons.lucide name="message-circle" class="h-5 w-5" />
-                            WhatsApp
-                        </span>
-                    </a>
-                    <a :href="telegramHref" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_telegram', 'calculator')">
-                        <span class="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-telegram px-7 text-base font-semibold text-telegram-foreground transition hover:bg-telegram/90">
-                            <x-icons.lucide name="send" class="h-5 w-5" />
-                            Telegram
-                        </span>
-                    </a>
-                </div>
+                @if (C::showWhatsApp() || C::showTelegram())
+                    <div @class([
+                        'grid gap-2.5',
+                        'grid-cols-2' => C::showWhatsApp() && C::showTelegram(),
+                        'grid-cols-1' => C::showWhatsApp() xor C::showTelegram(),
+                    ])>
+                        @if (C::showWhatsApp())
+                            <a :href="whatsAppHref" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_whatsapp', 'calculator')">
+                                <span class="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-whatsapp px-7 text-base font-semibold text-whatsapp-foreground transition hover:bg-whatsapp/90">
+                                    <x-icons.lucide name="message-circle" class="h-5 w-5" />
+                                    WhatsApp
+                                </span>
+                            </a>
+                        @endif
+                        @if (C::showTelegram())
+                            <a :href="telegramHref" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('calc_cta_telegram', 'calculator')">
+                                <span class="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-telegram px-7 text-base font-semibold text-telegram-foreground transition hover:bg-telegram/90">
+                                    <x-icons.lucide name="send" class="h-5 w-5" />
+                                    Telegram
+                                </span>
+                            </a>
+                        @endif
+                    </div>
+                @endif
                 <button type="button" x-on:click="window.slomTrackCTA && window.slomTrackCTA('calc_cta_callback', 'calculator'); $dispatch('open-callback', { source: 'calculator' })" class="cursor-pointer text-sm font-medium text-primary underline-offset-4 hover:underline">
                     или закажите бесплатный обратный звонок
                 </button>
@@ -422,6 +432,10 @@
                         return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(value);
                     },
                     messengerHref(baseUrl) {
+                        if (! baseUrl) {
+                            return '#';
+                        }
+
                         const summary = this.result !== null ? this.result.summary : '';
                         const text = `Здравствуйте! Рассчитал на сайте:\n${summary}\nПодскажите, когда сможете приехать?`;
 

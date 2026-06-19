@@ -14,10 +14,10 @@ final class LeadRequestSubmitter
 {
     public static function submit(LeadRequestData $data): LeadRequest
     {
-        $recipient = config('landing.lead_mail_to');
+        $recipient = LandingContact::leadMailTo();
 
-        if (! is_string($recipient) || $recipient === '') {
-            throw new InvalidArgumentException('LEAD_MAIL_TO is not configured');
+        if ($recipient === '') {
+            throw new InvalidArgumentException('Lead mail recipient is not configured');
         }
 
         $leadRequest = LeadRequest::query()->create([

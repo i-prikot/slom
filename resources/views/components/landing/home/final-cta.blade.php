@@ -11,18 +11,22 @@
         <div class="grid items-center gap-8 lg:grid-cols-2">
             <div><h2 class="font-display text-3xl font-bold leading-tight sm:text-4xl">Нужно срочно? Позвоните — <span class="text-primary">подскажем решение уже сейчас!</span></h2><p class="mt-3 text-white/70">Ответим за 5 минут. Назовём точную цену по телефону.</p></div>
             <div class="rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-md">
-                <a href="tel:{{ C::PHONE_TEL }}" class="mcn-phone cursor-pointer block text-center font-display text-3xl font-bold tracking-tight hover:text-primary sm:text-4xl">{{ C::PHONE_DISPLAY }}</a>
+                <a href="tel:{{ C::phoneTel() }}" class="mcn-phone cursor-pointer block text-center font-display text-3xl font-bold tracking-tight hover:text-primary sm:text-4xl">{{ C::phoneDisplay() }}</a>
                 <p class="mt-2 text-center text-sm text-white/60">Ответим за 5 минут</p>
-                <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                    <a href="tel:{{ C::PHONE_TEL }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'final_btn')">
+                <div class="mt-5 grid gap-3 {{ C::ctaGridClass() }}">
+                    <a href="tel:{{ C::phoneTel() }}" onclick="window.slomTrackCTA && window.slomTrackCTA('phone', 'final_btn')">
                         <span class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-yellow-gradient px-8 text-base font-semibold text-primary-foreground shadow-cta transition hover:brightness-105 active:brightness-95"><x-icons.lucide name="phone" class="h-5 w-5" /> Позвонить</span>
                     </a>
-                    <a href="{{ C::messengerUrl(C::WHATSAPP_URL) }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('whatsapp', 'final')">
-                        <span class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-whatsapp px-8 text-base font-semibold text-whatsapp-foreground transition hover:bg-whatsapp/90"><x-icons.lucide name="message-circle" class="h-5 w-5" /> WhatsApp</span>
-                    </a>
-                    <a href="{{ C::messengerUrl(C::TELEGRAM_URL) }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('telegram', 'final')">
-                        <span class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-telegram px-8 text-base font-semibold text-telegram-foreground transition hover:bg-telegram/90"><x-icons.lucide name="send" class="h-5 w-5" /> Telegram</span>
-                    </a>
+                    @if (C::showWhatsApp())
+                        <a href="{{ C::messengerUrl(C::whatsappUrl()) }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('whatsapp', 'final')">
+                            <span class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-whatsapp px-8 text-base font-semibold text-whatsapp-foreground transition hover:bg-whatsapp/90"><x-icons.lucide name="message-circle" class="h-5 w-5" /> WhatsApp</span>
+                        </a>
+                    @endif
+                    @if (C::showTelegram())
+                        <a href="{{ C::messengerUrl(C::telegramUrl()) }}" target="_blank" rel="noopener" onclick="window.slomTrackCTA && window.slomTrackCTA('telegram', 'final')">
+                            <span class="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-telegram px-8 text-base font-semibold text-telegram-foreground transition hover:bg-telegram/90"><x-icons.lucide name="send" class="h-5 w-5" /> Telegram</span>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
