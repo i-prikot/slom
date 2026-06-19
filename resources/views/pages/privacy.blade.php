@@ -1,10 +1,18 @@
-@php use App\Support\LandingContact as C; @endphp
+@php
+    use App\Support\LandingContact as C;
+    use App\Support\StructuredData;
+
+    $pageTitle = 'Политика конфиденциальности — СЛОМ24';
+    $pageDescription = 'Политика конфиденциальности сайта СЛОМ24: обработка персональных данных, cookie, контакты оператора.';
+@endphp
 
 <x-layouts.app
-    :title="'Политика конфиденциальности — СЛОМ24'"
-    :metaTitle="'Политика конфиденциальности — СЛОМ24'"
-    :metaDescription="'Политика конфиденциальности сайта СЛОМ24: обработка персональных данных, cookie, контакты оператора.'"
+    :title="$pageTitle"
+    :metaTitle="$pageTitle"
+    :metaDescription="$pageDescription"
     :metaRobots="'index,follow'"
+    :canonicalUrl="route('privacy')"
+    :structuredData="StructuredData::forWebPage($pageTitle, $pageDescription, route('privacy'))"
 >
     <main class="min-h-screen bg-background">
         <header class="border-b border-border bg-secondary text-secondary-foreground">

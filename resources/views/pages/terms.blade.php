@@ -1,10 +1,18 @@
-@php use App\Support\LandingContact as C; @endphp
+@php
+    use App\Support\LandingContact as C;
+    use App\Support\StructuredData;
+
+    $pageTitle = 'Соглашение об обработке персональных данных — СЛОМ24';
+    $pageDescription = 'Соглашение об обработке персональных данных на сайте СЛОМ24.';
+@endphp
 
 <x-layouts.app
-    :title="'Соглашение об обработке персональных данных — СЛОМ24'"
-    :metaTitle="'Соглашение об обработке персональных данных — СЛОМ24'"
-    :metaDescription="'Соглашение об обработке персональных данных на сайте СЛОМ24.'"
+    :title="$pageTitle"
+    :metaTitle="$pageTitle"
+    :metaDescription="$pageDescription"
     :metaRobots="'index,follow'"
+    :canonicalUrl="route('terms')"
+    :structuredData="StructuredData::forWebPage($pageTitle, $pageDescription, route('terms'))"
 >
     <main class="min-h-screen bg-background">
         <header class="border-b border-border bg-secondary text-secondary-foreground">

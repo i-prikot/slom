@@ -2,6 +2,8 @@
     :title="'Алмазная резка и бурение бетона в Красноярске — СЛОМ24'"
     :metaTitle="'СЛОМ24 — Алмазная резка и бурение бетона'"
     :metaDescription="'Алмазная резка, бурение и демонтаж бетона в Красноярске и крае. Приезд за 60 минут, точная цена за 2 минуты.'"
+    :canonicalUrl="route('home')"
+    :structuredData="$structuredData"
 >
     <main class="min-h-screen lg:pb-0" x-data x-init="window.initHomeCallbackTrigger?.()">
         <x-landing.home.header />
