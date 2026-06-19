@@ -100,6 +100,27 @@ final class LeadRequestTest extends TestCase
         ));
     }
 
+    public function test_submitter_sends_mail_to_multiple_recipients(): void
+    {
+        Mail::fake();
+
+        config(['landing.lead_mail_to' => 'leads@example.com,ops@example.com']);
+        LandingSettings::query()->update(['lead_mail_to' => 'leads@example.com, ops@example.com']);
+        LandingSettings::flushCache();
+
+        LeadRequestSubmitter::submit(new LeadRequestData(
+            phone: '73912051515',
+            phoneDisplay: '+7 (391) 205-15-15',
+            source: 'hero',
+            formType: 'hero',
+        ));
+
+        Mail::assertSent(LeadRequestMail::class, function (LeadRequestMail $mail): bool {
+            return $mail->hasTo('leads@example.com')
+                && $mail->hasTo('ops@example.com');
+        });
+    }
+
     public function test_submitter_does_not_create_record_when_lead_mail_to_missing(): void
     {
         Mail::fake();

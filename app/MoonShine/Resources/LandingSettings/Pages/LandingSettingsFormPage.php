@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources\LandingSettings\Pages;
 
 use App\MoonShine\Resources\LandingSettings\LandingSettingsResource;
+use App\Support\LandingContact;
+use Closure;
 use MoonShine\Contracts\Core\TypeCasts\DataWrapperContract;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FieldContract;
@@ -78,8 +80,9 @@ final class LandingSettingsFormPage extends FormPage
                         Url::make('Ссылка на карту', 'address_map_url')
                             ->hint('Оставьте пустым — ссылка сгенерируется из адреса'),
 
-                        Email::make('Email для заявок', 'lead_mail_to')
-                            ->required(),
+                        Text::make('Email для заявок', 'lead_mail_to')
+                            ->required()
+                            ->hint('Один или несколько адресов через запятую'),
                     ])->icon('phone'),
 
                     Tab::make('Мессенджеры', [
@@ -146,7 +149,32 @@ final class LandingSettingsFormPage extends FormPage
             'email' => ['required', 'email', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'address_map_url' => ['nullable', 'url', 'max:2048'],
-            'lead_mail_to' => ['required', 'email', 'max:255'],
+            'lead_mail_to' => [
+                'required',
+                'string',
+                'max:255',
+                function (string $attribute, mixed $value, Closure $fail): void {
+                    if (! is_string($value)) {
+                        return;
+                    }
+
+                    $emails = LandingContact::parseEmailList($value);
+
+                    if ($emails === []) {
+                        $fail('Укажите хотя бы один email.');
+
+                        return;
+                    }
+
+                    foreach ($emails as $email) {
+                        if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                            $fail('Укажите корректные email-адреса через запятую.');
+
+                            return;
+                        }
+                    }
+                },
+            ],
             'show_whatsapp' => ['boolean'],
             'show_telegram' => ['boolean'],
             'show_max' => ['boolean'],

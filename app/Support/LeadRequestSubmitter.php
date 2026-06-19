@@ -14,9 +14,9 @@ final class LeadRequestSubmitter
 {
     public static function submit(LeadRequestData $data): LeadRequest
     {
-        $recipient = LandingContact::leadMailTo();
+        $recipients = LandingContact::leadMailTo();
 
-        if ($recipient === '') {
+        if ($recipients === []) {
             throw new InvalidArgumentException('Lead mail recipient is not configured');
         }
 
@@ -31,7 +31,7 @@ final class LeadRequestSubmitter
             'user_agent' => request()->userAgent(),
         ]);
 
-        Mail::to($recipient)->send(new LeadRequestMail($leadRequest));
+        Mail::to($recipients)->send(new LeadRequestMail($leadRequest));
 
         return $leadRequest;
     }

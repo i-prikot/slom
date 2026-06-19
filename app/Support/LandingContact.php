@@ -69,17 +69,36 @@ final class LandingContact
         return 'https://yandex.ru/maps/?text='.rawurlencode($settings->address);
     }
 
-    public static function leadMailTo(): string
+    /**
+     * @return list<string>
+     */
+    public static function leadMailTo(): array
     {
         $fromSettings = self::settings()->lead_mail_to;
 
-        if ($fromSettings !== '') {
-            return $fromSettings;
+        $raw = $fromSettings !== ''
+            ? $fromSettings
+            : (is_string(config('landing.lead_mail_to')) ? config('landing.lead_mail_to') : '');
+
+        return self::parseEmailList($raw);
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function parseEmailList(string $value): array
+    {
+        $emails = [];
+
+        foreach (explode(',', $value) as $part) {
+            $email = trim($part);
+
+            if ($email !== '') {
+                $emails[] = $email;
+            }
         }
 
-        $fromConfig = config('landing.lead_mail_to');
-
-        return is_string($fromConfig) ? $fromConfig : '';
+        return $emails;
     }
 
     public static function company(): string
