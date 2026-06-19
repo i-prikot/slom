@@ -14,6 +14,8 @@ return [
 
     'yandex_metrika_id' => env('YANDEX_METRIKA_ID'),
 
+    'mcn_tracker_token' => env('MCN_TRACKER_TOKEN'),
+
     'sitemap' => [
         [
             'route' => 'home',

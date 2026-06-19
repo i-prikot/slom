@@ -63,5 +63,6 @@
         <x-toaster-hub class="z-[120]" />
         @livewireScripts
         <x-analytics.yandex-metrika />
+        <x-analytics.mcn-tracker />
     </body>
 </html>
