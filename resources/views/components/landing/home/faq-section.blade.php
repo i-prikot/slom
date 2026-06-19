@@ -8,7 +8,9 @@
                 <div class="px-5 sm:px-6">
                     <button type="button" class="cursor-pointer flex w-full items-center justify-between py-4 text-left text-base font-semibold" x-on:click="open = open === {{ $index }} ? -1 : {{ $index }}">
                         <span>{{ $faq['question'] }}</span>
-                        <span>▾</span>
+                        <span class="shrink-0 transition" :class="open === {{ $index }} ? 'rotate-180' : ''">
+                            <x-icons.lucide name="chevron-down" class="h-5 w-5 text-muted-foreground" />
+                        </span>
                     </button>
                     <div class="pb-4 text-sm text-muted-foreground" x-show="open === {{ $index }}" x-transition>{{ $faq['answer'] }}</div>
                 </div>

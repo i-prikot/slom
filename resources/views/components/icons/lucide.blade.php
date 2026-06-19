@@ -14,6 +14,7 @@
         'sparkles' => '<path d="M9.94 14.5 8.5 18.06 7.06 14.5 3.5 13.06 7.06 11.62 8.5 8.06l1.44 3.56 3.56 1.44Z"/><path d="M18 8 17 5l-1-3-1 3-3 1 3 1 1 3 1-3Z"/><path d="M19 22 18 19l-3-1 3-1 1-3 1 3 3 1-3 1Z"/>',
         'info' => '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>',
         'chevron-left' => '<path d="m15 18-6-6 6-6"/>',
+        'chevron-down' => '<path d="m6 9 6 6 6-6"/>',
         'rotate-ccw' => '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
         'map-pin' => '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
         'mail' => '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 6L2 7"/>',
