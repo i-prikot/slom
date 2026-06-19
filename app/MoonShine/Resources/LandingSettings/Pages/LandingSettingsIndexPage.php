@@ -21,7 +21,7 @@ final class LandingSettingsIndexPage extends IndexPage
         return 'Настройки сайта';
     }
 
-    protected function prepareBeforeRender(): void
+    public function prepareBeforeRender(): void
     {
         throw new HttpResponseException(
             redirect($this->getResource()->getFormPageUrl(LandingSettings::instance()->getKey()))
